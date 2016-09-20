@@ -49,7 +49,7 @@ function searanddown {
         echo "${RESULT[0]}"
         sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl
         sudo chmod a+rx /usr/local/bin/youtube-dl
-        youtube-dl "https://youtu.be${RESULT[0]}"
+        youtube-dl "https://youtube.com${RESULT[0]}"
         sleep 5
 	
 }
