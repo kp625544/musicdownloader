@@ -54,6 +54,21 @@ function searanddown {
 	
 }
 
+######### Cleaning directory
+function cleandir {
+
+	echo -e "\e[1;31mThis option will delete unnecessary garbage from the folder!\e[0m"
+	echo -e ""
+	echo -e "Do you want to do it ? (Y/N)"
+			read install
+			if [[ $install = Y || $install = y ]] ; then	
+				rm shortlist.txt
+                                rm shortlist1.txt
+                                rm results\?search_query\=$newsongname.txt
+			else
+				echo -e "\e[32m[-] Ok,maybe later !\e[0m"
+			fi
+}
 
 function mainmenu {
 echo -e "
