@@ -1,0 +1,17 @@
+# Command logfile created by Lynx 2.8.9dev.8 (21 Dec 2015)
+# Arg0 = lynx
+# Arg1 = -cmd_log=/home/hydra/Desktop/AUR/ost-project/youtube.txt
+# Arg2 = https://www.youtube.com/results?search_query=hello+from+the+other+side
+key y
+key y
+key y
+key \
+key p
+key ^J
+key .
+key t
+key x
+key t
+key ^J
+key q
+key y
