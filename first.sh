@@ -98,7 +98,7 @@ Connection Info :-----------------------------------------------
   Gateway: \033[32m$DEFAULT_ROUTE\033[m Interface: \033[32m$IFACE\033[m My LAN Ip: \033[32m$MYIP\033[m
 \033[32m###############################################################################\033[m"
 
-select menusel in "Install Essential programs" "Enter your Song Name" "Search and Download" "Update tools to latest version" "EXIT PROGRAM"; do
+select menusel in "Install Essential programs" "Enter your Song Name" "Search and Download" "Clear garbage files" "EXIT PROGRAM"; do
 case $menusel in
 	"Install Essential programs")
 		installvirtualbox
@@ -111,8 +111,8 @@ case $menusel in
 	"Search and Download")
 		searanddown 
 		clear ;;
-	"Update tools to latest version")
-		updatetools
+	"Clear garbage files")
+		cleandir
 		clear ;;
 
 	
