@@ -17,6 +17,9 @@ function installvirtualbox {
 				echo -e "\033[31m====== Installing======\033[m"
 				sleep 2
 				sudo apt-get update && sudo apt-get install wget youtube-dl ffmpeg lame xclip lynx curl
+                                sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl
+        sudo chmod a+rx /usr/local/bin/youtube-dl
+        
 			else
 				echo -e "\e[32m[-] Ok,maybe later !\e[0m"
 			fi
@@ -49,8 +52,6 @@ function searanddown {
         sed -ne '/watch/p' shortlist.txt > shortlist1.txt
         readonly RESULT=($(cat shortlist1.txt))
         echo "${RESULT[0]}"
-        sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl
-        sudo chmod a+rx /usr/local/bin/youtube-dl
         youtube-dl "https://youtube.com${RESULT[0]}"
         sleep 5
 	
