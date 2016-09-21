@@ -6,8 +6,8 @@ IFACE=$(ip route show | awk '(NR == 2) {print $3}')
 JAVA_VERSION=`java -version 2>&1 |awk 'NR==1{ gsub(/"/,""); print $3 }'`
 MYIP=$(ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print $2}' | cut -f1  -d'/')
 
-######### Install VirutalBox
-function installvirtualbox {
+######### Install Essential Programs
+function installessentialprograms {
 
 	echo -e "\e[1;31mThis option will install all essential programs!\e[0m"
 	echo -e ""
@@ -18,7 +18,9 @@ function installvirtualbox {
 				sleep 2
 				sudo apt-get update && sudo apt-get install wget youtube-dl ffmpeg lame xclip lynx curl
                                 sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl
-        sudo chmod a+rx /usr/local/bin/youtube-dl
+                                sudo chmod a+rx /usr/local/bin/youtube-dl
+                                echo -e "Success! Continue with next option"
+                                sleep 2
         
 			else
 				echo -e "\e[32m[-] Ok,maybe later !\e[0m"
@@ -37,7 +39,9 @@ function createsongvariable {
 				echo -e "\033[31m====== Installing======\033[m"
 				##sleep 2
 				readonly newsongname=$(echo -e $songname | sed -e "s/ /+/g")
-                             
+                                echo -e "Success! Continue with next option"
+                                sleep 2
+        
 			else
 				echo -e "\e[32m[-] Ok,maybe later !\e[0m"
 			fi
@@ -53,7 +57,10 @@ function searanddown {
         readonly RESULT=($(cat shortlist1.txt))
         echo "${RESULT[0]}"
         youtube-dl "https://youtube.com${RESULT[0]}"
-        sleep 5
+        sleep 1
+        echo -e "Success! Continue with next option"
+        sleep 2
+        
 	
 }
 
@@ -69,6 +76,9 @@ function cleandir {
                                 rm shortlist1.txt
                                 rm results\?search_query\=$newsongname.txt
                                 rm workingdirectory.txt
+                                echo -e "Success! Continue with next option"
+                                sleep 2
+        
 			else
 				echo -e "\e[32m[-] Ok,maybe later !\e[0m"
 			fi
@@ -79,7 +89,7 @@ echo -e "
 \033[32m################################################################################\033[m
 \033[1;36m
 |                                                                              |
-|                          I love Security and Haking.                         |
+|                          I love Security .                                   |
 |______________________________________________________________________________|
 |                                                                              |
 |                                                                              |
@@ -105,7 +115,7 @@ Connection Info :-----------------------------------------------
 select menusel in "Install Essential programs" "Enter your Song Name" "Search and Download" "Clear garbage files" "EXIT PROGRAM"; do
 case $menusel in
 	"Install Essential programs")
-		installvirtualbox
+		installessentialprograms
 		clear ;;
 	
 	"Enter your Song Name")
@@ -124,7 +134,7 @@ case $menusel in
 		clear && exit 0 ;;
 		
 	* )
-		screwup
+		clear && exit 0 ;;
 		clear ;;
 esac
 
