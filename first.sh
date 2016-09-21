@@ -42,7 +42,9 @@ function createsongvariable {
 ######### Search and download song
 function searanddown {
         echo -e $newsongname
-        lynx -cmd_script=/home/hydra/Desktop/AUR/ost-project/youtube.txt http://www.youtube.com/results?search_query=$newsongname
+        pwd > workingdirectory.txt
+        readonly workingdirectory=($(cat workingdirectory.txt))
+        lynx -cmd_script=$workingdirectory/default.txt http://www.youtube.com/results?search_query=$newsongname
         cat results\?search_query\=$newsongname.txt |   grep -o '<a href=['"'"'"][^"'"'"']*['"'"'"]' |   sed -e 's/^<a href=["'"'"']//' -e 's/["'"'"']$//' > shortlist.txt
         sed -ne '/watch/p' shortlist.txt > shortlist1.txt
         readonly RESULT=($(cat shortlist1.txt))
@@ -65,6 +67,7 @@ function cleandir {
 				rm shortlist.txt
                                 rm shortlist1.txt
                                 rm results\?search_query\=$newsongname.txt
+                                rm workingdirectory.txt
 			else
 				echo -e "\e[32m[-] Ok,maybe later !\e[0m"
 			fi
